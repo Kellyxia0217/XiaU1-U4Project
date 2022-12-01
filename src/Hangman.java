@@ -62,7 +62,12 @@ public static void revealword(String letter) {
             System.out.print("_");
         }
         if (word.contains(letter)) {
-            W.replace()
+            for (int i = 0; i < word.length(); i++) {
+                if (word.substring(i ,i+1) == letter) {
+                    W.replace("_" ,letter);
+                }
+            }
+
         }
 
         }
