@@ -5,28 +5,13 @@ import java.util.Scanner;
 public class Hangman {
     private static int Guesses = 8;
     private static String lists;
+    private static String letter;
+    static List<String> chars = new ArrayList<>();
     static String[] words = {"watermelon", "computer", "headphones", "window", "elephant"};
     private static String word = words[(int) (Math.random() * words.length)];
-    static List<String> chars = new ArrayList<>();
 
 
-    public static List<Character>
-    convertStringToCharList(String str)
-    {
 
-        // Create an empty List of character
-        List<Character> chars = new ArrayList<>();
-
-        // For each character in the String
-        // add it to the List
-        for (char ch : str.toCharArray()) {
-
-            chars.add(ch);
-        }
-
-        // return the List
-        return chars;
-    }
 
 
 
@@ -55,24 +40,35 @@ public class Hangman {
     public static void play() {
         Scanner input = new Scanner(System.in);
         while (Guesses > 0) {
+            System.out.println();
             System.out.println("-------------");
             System.out.println("Your Guess:");
             System.out.print("Input: ");
             String first = input.nextLine();
             Hangman.Checker(first);
+            Hangman.revealword(first);
             if (Guesses == 0) {
                 System.out.println("You have failed");
                 System.out.println("Here are the letters that you have guessed");
-                System.out.println(lists);
+                System.out.println(chars);
             }
         }
 
     }
-public static void revealword() {
+public static void revealword(String letter) {
+        String W = "";
+        for (int j = 0; j < word.length(); j++) {
+            W += "_";
+            System.out.print("_");
+        }
+        if (word.contains(letter)) {
+            W.replace()
+        }
+
+        }
 
 }
 
 
 
 
-}
