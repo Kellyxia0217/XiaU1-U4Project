@@ -49,20 +49,20 @@ public static void SetW() {
         Hangman.SetW();
         while (Guesses > 0 && W.contains("_")) {
             System.out.println();
-            System.out.print("------------- \n Your Guess: \n Input: "  );
+            System.out.print("------------- \n Your Guess: \n Input: ");
             String first = input.nextLine();
             if (first.length() != 1) {
-                System.out.print("sorry, you can only guess one letter words.");
-                break;
-            }
-            Hangman.Checker(first);
-            Hangman.revealword(first);
-            if (Guesses == 0) {
-                System.out.println("You have failed \n Here are the letters that you have guessed: ");
-                System.out.println(chars);
-            } else if (W.indexOf("_") == -1 ) {
-                System.out.println("Congrats! \n You have won.");
-                System.out.println("The word is: " + word);
+                System.out.print("Sorry, you can only guess one letter at a time.");
+            } else {
+                Hangman.Checker(first);
+                Hangman.revealword(first);
+                if (Guesses == 0) {
+                    System.out.println("You have failed \n Here are the letters that you have guessed: ");
+                    System.out.println(chars);
+                } else if (W.indexOf("_") == -1) {
+                    System.out.println("Congrats! \n You have won.");
+                    System.out.println("The word is: " + word);
+                }
             }
         }
 
