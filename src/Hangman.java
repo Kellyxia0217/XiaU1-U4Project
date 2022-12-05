@@ -21,7 +21,10 @@ public class Hangman {
         for (int j = 0; j < word.length(); j++) {
             W += "_";
             System.out.print("_");
+
         }
+        System.out.println();
+        System.out.print("The word has " + word.length() + " letters");
     }
 
     public static void Checker(String letter) {
