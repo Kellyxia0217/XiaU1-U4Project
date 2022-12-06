@@ -2,21 +2,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.System.exit;
-
+/**
+ * The Hangman Class is a word guessing game. This game has a list and letter, plus a few other variable with a given value.
+ * A array that contains random words and a code that chooses a word randomly from the array.
+ */
 public class Hangman {
     private static int Guesses = 8;
     private static String lists;
     private static String letter;
     private static String W = "";
     private static Boolean play  = true;
-
-
     static List<String> chars = new ArrayList<>();
     static String[] words = {"watermelon", "computer", "headphones", "window", "elephant", "jewel", "number" , "soar", "compromise", "clean", "eternal", "isolation", "discriminate"};
     private static String word = words[(int) (Math.random() * words.length)];
 
-
+    /**
+     * The SetW method for the Hangman Class. This method will print out dashes to show the length of the word that the user has to figure out
+     * it also tell the user how many letters there are.
+     */
     public static void SetW() {
         for (int j = 0; j < word.length(); j++) {
             W += "_";
@@ -26,7 +29,13 @@ public class Hangman {
         System.out.println();
         System.out.print("The word has " + word.length() + " letters");
     }
-
+    /**
+     * The Checker for the Hangman Class. This method checks if the guessed letter is in the word or not.
+     * it checks for repeated letters
+     * if the word does contain the letter
+     * if the word doesn't contain the letter
+     * it also adds the wrong letters into a list
+     */
     public static void Checker(String letter) {
 
 
@@ -45,7 +54,10 @@ public class Hangman {
 
 
     }
-
+    /**
+     * The play() for the Hangman Class. This method includes all the other methods that is written in order for the game to run.
+     * it also includes the winning and losing logic.
+     */
     public static void play() {
 
         Scanner input = new Scanner(System.in);
@@ -72,7 +84,10 @@ public class Hangman {
         }
 
     }
-
+    /**
+     * The revealword for the Hangman Class. This method will reveal the word or replace the dashes where the index of the letter is found if guessed correctly
+     * @param letter a String that represents the letter guessed by the user
+     */
     public static void revealword(String letter) {
         if (word.contains(letter)) {
             for (int i = 0; i < word.length(); i++) {
