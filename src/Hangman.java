@@ -11,9 +11,9 @@ public class Hangman {
     private static String lists;
     private static String letter;
     private static String W = "";
-    private static Boolean play  = true;
+    private static Boolean play = true;
     static List<String> chars = new ArrayList<>();
-    static String[] words = {"watermelon", "computer", "headphones", "window", "elephant", "jewel", "number" , "soar", "compromise", "clean", "eternal", "isolation", "discriminate"};
+    static String[] words = {"watermelon", "computer", "headphones", "window", "elephant", "jewel", "number", "soar", "compromise", "clean", "eternal", "isolation", "discriminate"};
     private static String word = words[(int) (Math.random() * words.length)];
 
     /**
@@ -29,6 +29,7 @@ public class Hangman {
         System.out.println();
         System.out.print("The word has " + word.length() + " letters");
     }
+
     /**
      * The Checker for the Hangman Class. This method checks if the guessed letter is in the word or not.
      * it checks for repeated letters
@@ -50,6 +51,53 @@ public class Hangman {
             chars.add(letter);
 
 
+        }
+
+
+    }
+
+
+
+    /**
+     * The revealword for the Hangman Class. This method will reveal the word or replace the dashes where the index of the letter is found if guessed correctly
+     *
+     * @param letter a String that represents the letter guessed by the user
+     */
+    public static void revealword(String letter) {
+        if (word.contains(letter)) {
+            for (int i = 0; i < word.length(); i++) {
+                if (word.substring(i, i + 1).equals(letter)) {
+                    W = W.substring(0, i) + letter + W.substring(i + 1);
+
+                }
+
+            }
+
+        }
+        System.out.println(W);
+    }
+
+    /**
+     * The guessIt for the Hangman Class. This method will allow the user to guess the entire word by comparing the word the user types to the actual word.
+     */
+    public static void guessIt() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Do you think you can guess the entire word?(Answer yes or no) ");
+        if (input.nextLine().equals("yes")) {
+            System.out.println("Answer your guess: ");
+            String word1 = input.nextLine();
+            if (word1.length() != word.length()) {
+                System.out.println("Please make sure your guess has the same amount of letter as the word space given next time.");
+            }
+            if (word1.equals(word)) {
+                W.replace(W, word);
+                System.out.println("Congrats! \n You have won.");
+                System.out.println("The word is: " + word);
+                play = false;
+
+            } else {
+                Guesses--;
+            }
         }
 
 
@@ -84,45 +132,11 @@ public class Hangman {
         }
 
     }
-    /**
-     * The revealword for the Hangman Class. This method will reveal the word or replace the dashes where the index of the letter is found if guessed correctly
-     * @param letter a String that represents the letter guessed by the user
-     */
-    public static void revealword(String letter) {
-        if (word.contains(letter)) {
-            for (int i = 0; i < word.length(); i++) {
-                if (word.substring(i, i + 1).equals(letter)) {
-                    W = W.substring(0, i) + letter + W.substring(i + 1);
 
-                }
-
-            }
-
-        }
-        System.out.println(W);
-    }
-
-    public static void guessIt() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Do you think you can guess the entire word?(Answer yes or no) ");
-        if (input.nextLine().equals("yes")) {
-            System.out.println("Answer your guess: ");
-            String word1 = input.nextLine();
-            if (word1.length() != word.length()) {
-                System.out.println("Please make sure your guess has the same amount of letter as the word space given next time.");
-            }
-            if (word1.equals(word)) {
-                W.replace(W, word);
-                System.out.println("Congrats! \n You have won.");
-                System.out.println("The word is: " + word);
-                play = false;
-
-            } else {
-                Guesses--;
-            }
-        }
+    public String toString() {
 
 
+        return null;
     }
 }
 
