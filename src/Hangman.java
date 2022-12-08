@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Hangman {
     private static int Guesses = 8;
-    private static String lists;
+
     private static String letter;
     private static String W = "";
     private static Boolean play = true;
